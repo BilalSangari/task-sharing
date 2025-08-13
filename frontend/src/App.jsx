@@ -1,9 +1,18 @@
-export default function App() {
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+
+function App() {
   return (
-    <div className="text-center p-8">
-      <h1 className="text-4xl font-bold text-blue-600">
-        Hello Tailwind!
-      </h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* Future pages */}
+        {/* <Route path="/create-listing" element={<CreateListing />} /> */}
+        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+      </Routes>
+    </Router>
   );
 }
+
+export default App;
