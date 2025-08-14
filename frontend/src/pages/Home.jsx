@@ -1,20 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import HeroSection from "../components/HeroSection";
+import Hero from "../components/Hero";
 import FeaturedItems from "../components/FeaturedItems";
-import HowItWorks from "../components/HowItWorks";
 import Footer from "../components/Footer";
 
-export default function Home() {
+const Home = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") setDarkMode(true);
+  }, []);
+
+  const toggleDarkMode = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    localStorage.setItem("theme", newMode ? "dark" : "light");
+  };
+
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      <main className="flex-grow">
-        <HeroSection />
+    <div className={darkMode ? "dark" : ""}>
+      <div className="min-h-screen bg-[#eeeeee] dark:bg-[#313841] transition-colors">
+        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        <Hero />
         <FeaturedItems />
-        <HowItWorks />
-      </main>
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
-}
+};
+
+export default Home;

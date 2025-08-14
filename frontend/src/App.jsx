@@ -7,9 +7,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* Future pages */}
-        {/* <Route path="/create-listing" element={<CreateListing />} /> */}
-        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
       </Routes>
     </Router>
   );

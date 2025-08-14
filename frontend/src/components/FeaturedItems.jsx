@@ -1,44 +1,33 @@
 import React from "react";
-import ItemCard from "./ItemCard";
+import { motion } from "framer-motion";
 
-const mockItems = [
-  {
-    id: 1,
-    title: "Winter Jacket",
-    description: "Almost new, size M",
-    imageUrl: "/images/jacket.jpg",
-  },
-  {
-    id: 2,
-    title: "Used Laptop",
-    description: "Works fine, 8GB RAM",
-    imageUrl: "/images/laptop.jpg",
-  },
-  {
-    id: 3,
-    title: "Books Set",
-    description: "A collection of novels",
-    imageUrl: "/images/books.jpg",
-  },
-  {
-    id: 4,
-    title: "Bicycle",
-    description: "Good condition, city bike",
-    imageUrl: "/images/bike.jpg",
-  },
+const items = [
+  { id: 1, name: "Winter Jacket", img: "https://via.placeholder.com/200" },
+  { id: 2, name: "Bicycle", img: "https://via.placeholder.com/200" },
+  { id: 3, name: "Laptop", img: "https://via.placeholder.com/200" },
 ];
 
-export default function FeaturedItems() {
+const FeaturedItems = () => {
   return (
-    <section id="browse" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold mb-10 text-center">Featured Donations</h2>
-        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-          {mockItems.map(item => (
-            <ItemCard key={item.id} item={item} />
-          ))}
-        </div>
+    <section className="p-8 bg-white dark:bg-[#3a4750] transition-colors">
+      <h3 className="text-2xl font-bold text-center mb-6 text-[#3a4750] dark:text-[#ea9216]">
+        Featured Donations
+      </h3>
+      <div className="flex gap-6 justify-center flex-wrap">
+        {items.map((item) => (
+          <motion.div
+            key={item.id}
+            drag
+            dragConstraints={{ top: -50, bottom: 50, left: -50, right: 50 }}
+            className="p-4 bg-[#eeeeee] dark:bg-[#313841] rounded-lg shadow-md cursor-grab"
+          >
+            <img src={item.img} alt={item.name} className="rounded-md mb-2" />
+            <p className="text-center font-medium text-[#3a4750] dark:text-gray-200">{item.name}</p>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
-}
+};
+
+export default FeaturedItems;
