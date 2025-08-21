@@ -1,17 +1,19 @@
 import {
+  Toast,
   ToastProvider,
   ToastViewport,
-  Toast,
   ToastTitle,
   ToastDescription,
   ToastClose,
   ToastAction,
 } from "@/components/ui/toast";
 
+// ✅ no ToastActionElement here
+
 export {
+  Toast,
   ToastProvider,
   ToastViewport,
-  Toast,
   ToastTitle,
   ToastDescription,
   ToastClose,
